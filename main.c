@@ -7,6 +7,20 @@ int g_WindowWidth = 150;
 int g_WindowHeight = 150;
 
 HWND g_WindowHandle;
+
+void DisplayText(HWND WindowHandle, char* Text) {
+
+    HDC DC = GetDC(WindowHandle);
+    
+    RECT RC;
+    
+    GetClientRect(WindowHandle, &RC);
+    
+    DrawTextA(DC, Text, -1, &RC, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+    
+    ReleaseDC(WindowHandle, DC);
+
+}
  
 int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, int CommandShow) {
     
@@ -71,6 +85,18 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
             PostQuitMessage(0);
             
             break;
+        
+        }
+
+        case WM_PAINT: {
+
+            PAINTSTRUCT PS;
+
+            BeginPaint(g_WindowHandle, &PS);
+
+            DisplayText(g_WindowHandle, "K");
+
+            EndPaint(g_WindowHandle, &PS);
         
         }
 
