@@ -104,6 +104,198 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
 
                 }
 
+                case VK_BACK: {
+                    
+                    g_Text = "BACKSPACE";
+
+                    break;
+
+                }
+
+                case VK_TAB: {
+                    
+                    g_Text = "TAB";
+
+                    break;
+
+                }
+
+                case VK_RETURN: {
+                    
+                    g_Text = "ENTER";
+
+                    break;
+
+                }
+
+                case VK_SHIFT: {
+                    
+                    g_Text = "SHIFT";
+
+                    break;
+
+                }
+
+                case VK_CONTROL: {
+                    
+                    g_Text = "CTRL";
+
+                    break;
+
+                }
+
+                case VK_MENU: {
+                    
+                    g_Text = "ALT";
+
+                    break;
+
+                }
+
+                case VK_CAPITAL: {
+                    
+                    g_Text = "CAPSLOCK";
+
+                    break;
+
+                }
+
+                case VK_SPACE: {
+                    
+                    g_Text = "SPACEBAR";
+
+                    break;
+
+                }
+
+                case VK_PRIOR: {
+                    
+                    g_Text = "PAGE UP";
+
+                    break;
+
+                }
+
+                case VK_NEXT: {
+                    
+                    g_Text = "PAGE DOWN";
+
+                    break;
+
+                }
+
+                case VK_END: {
+                    
+                    g_Text = "END";
+
+                    break;
+
+                }
+
+                case VK_HOME: {
+                    
+                    g_Text = "HOME";
+
+                    break;
+
+                }
+
+                case VK_SNAPSHOT: {
+                    
+                    g_Text = "PRINT SCREEN";
+
+                    break;
+
+                }
+
+                case VK_INSERT: {
+                    
+                    g_Text = "INSERT";
+
+                    break;
+
+                }
+
+                case 0x30: {
+                    
+                    g_Text = "0";
+
+                    break;
+
+                }
+
+                case 0x31: {
+                    
+                    g_Text = "1";
+
+                    break;
+
+                }
+
+                case 0x32: {
+                    
+                    g_Text = "2";
+
+                    break;
+
+                }
+
+                case 0x33: {
+                    
+                    g_Text = "3";
+
+                    break;
+
+                }
+
+                case 0x34: {
+                    
+                    g_Text = "4";
+
+                    break;
+
+                }
+
+                case 0x35: {
+                    
+                    g_Text = "5";
+
+                    break;
+
+                }
+
+                case 0x36: {
+                    
+                    g_Text = "6";
+
+                    break;
+
+                }
+
+                case 0x37: {
+                    
+                    g_Text = "7";
+
+                    break;
+
+                }
+
+                case 0x38: {
+                    
+                    g_Text = "8";
+
+                    break;
+
+                }
+
+                case 0x39: {
+                    
+                    g_Text = "9";
+
+                    break;
+
+                }
+
                 // Escape is set to quit the application temporarily.
 
                 case VK_ESCAPE: {
