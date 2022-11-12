@@ -8,6 +8,8 @@ int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, i
     
     g_WindowHandle = CreateWindowA(g_WindowClass.lpszClassName, 0, WS_VISIBLE | WS_POPUP, CW_USEDEFAULT, CW_USEDEFAULT, g_WindowWidth, g_WindowHeight, 0, 0, Instance, 0);
 
+    MoveWindow(g_WindowHandle, (GetSystemMetrics(SM_CXSCREEN) / 2) - (g_WindowWidth / 2), (GetSystemMetrics(SM_CYSCREEN) / 2) - (g_WindowHeight / 2), g_WindowWidth, g_WindowHeight, FALSE);
+
     UpdateWindow(g_WindowHandle);
  
     MSG Message = {0};
@@ -61,12 +63,16 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
             EndPaint(g_WindowHandle, &PS);
 
             Result = 0;
+
+            break;
         
         }
 
         default: {
             
             Result = DefWindowProcA(WindowHandle, Message, WParam, LParam);
+
+            break;
         
         }
 
