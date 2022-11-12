@@ -296,6 +296,214 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
 
                 }
 
+                case 0x41: {
+                    
+                    g_Text = "A";
+
+                    break;
+
+                }
+                
+                case 0x42: {
+                    
+                    g_Text = "B";
+
+                    break;
+
+                }
+
+                case 0x43: {
+                    
+                    g_Text = "C";
+
+                    break;
+
+                }
+
+                case 0x44: {
+                    
+                    g_Text = "D";
+
+                    break;
+
+                }
+
+                case 0x45: {
+                    
+                    g_Text = "E";
+
+                    break;
+
+                }
+
+                case 0x46: {
+                    
+                    g_Text = "F";
+
+                    break;
+
+                }
+
+                case 0x47: {
+                    
+                    g_Text = "G";
+
+                    break;
+
+                }
+
+                case 0x48: {
+                    
+                    g_Text = "H";
+
+                    break;
+
+                }
+
+                case 0x49: {
+                    
+                    g_Text = "I";
+
+                    break;
+
+                }
+
+                case 0x4A: {
+                    
+                    g_Text = "J";
+
+                    break;
+
+                }
+
+                case 0x4B: {
+                    
+                    g_Text = "K";
+
+                    break;
+
+                }
+
+                case 0x4C: {
+                    
+                    g_Text = "L";
+
+                    break;
+
+                }
+
+                case 0x4D: {
+                    
+                    g_Text = "M";
+
+                    break;
+
+                }
+
+                case 0x4E: {
+                    
+                    g_Text = "N";
+
+                    break;
+
+                }
+
+                case 0x4F: {
+                    
+                    g_Text = "O";
+
+                    break;
+
+                }
+
+                case 0x50: {
+                    
+                    g_Text = "P";
+
+                    break;
+
+                }
+
+                case 0x51: {
+                    
+                    g_Text = "Q";
+
+                    break;
+
+                }
+
+                case 0x52: {
+                    
+                    g_Text = "R";
+
+                    break;
+
+                }
+
+                case 0x53: {
+                    
+                    g_Text = "S";
+
+                    break;
+
+                }
+
+                case 0x54: {
+                    
+                    g_Text = "T";
+
+                    break;
+
+                }
+
+                case 0x55: {
+                    
+                    g_Text = "U";
+
+                    break;
+
+                }
+
+                case 0x56: {
+                    
+                    g_Text = "V";
+
+                    break;
+
+                }
+
+                case 0x57: {
+                    
+                    g_Text = "W";
+
+                    break;
+
+                }
+
+                case 0x58: {
+                    
+                    g_Text = "X";
+
+                    break;
+
+                }
+
+                case 0x59: {
+                    
+                    g_Text = "Y";
+
+                    break;
+
+                }
+
+                case 0x5A: {
+                    
+                    g_Text = "Z";
+
+                    break;
+
+                }
+
                 // Escape is set to quit the application temporarily.
 
                 case VK_ESCAPE: {
