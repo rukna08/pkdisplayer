@@ -24,13 +24,7 @@ int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, i
     
     RegisterClassExA(&WindowClass);
     
-    g_WindowHandle = CreateWindowExA(WS_EX_CLIENTEDGE | WS_EX_COMPOSITED, WindowClass.lpszClassName, "Pressed Key Displayer (PKDisplayer)", WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX | WS_VISIBLE, CW_USEDEFAULT, CW_USEDEFAULT, g_WindowWidth, g_WindowHeight, 0, 0, Instance, 0);
- 
-    NONCLIENTMETRICSA NonClientMetrics;
-
-    NonClientMetrics.cbSize = sizeof(NonClientMetrics);
-    
-    SystemParametersInfoA(SPI_GETNONCLIENTMETRICS, sizeof(NonClientMetrics), &NonClientMetrics, 0);
+    g_WindowHandle = CreateWindowExA(WS_EX_CLIENTEDGE | WS_EX_COMPOSITED, WindowClass.lpszClassName, 0, WS_VISIBLE, CW_USEDEFAULT, CW_USEDEFAULT, g_WindowWidth, g_WindowHeight, 0, 0, Instance, 0);
  
     UpdateWindow(g_WindowHandle);
  
@@ -52,9 +46,13 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
     
     switch(Message) {
 
+        LRESULT Result;
+
         case WM_CLOSE: {
             
             DestroyWindow(WindowHandle);
+
+            Result = 0;
             
             break;
 
@@ -63,6 +61,8 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
         case WM_DESTROY: {
             
             PostQuitMessage(0);
+
+            Result = 0;
             
             break;
         
@@ -77,14 +77,18 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
             DisplayText(g_WindowHandle, "K");
 
             EndPaint(g_WindowHandle, &PS);
+
+            Result = 0;
         
         }
 
         default: {
             
-            return DefWindowProcA(WindowHandle, Message, WParam, LParam);
+            Result = DefWindowProcA(WindowHandle, Message, WParam, LParam);
         
         }
+
+        return Result;
 
     }
 
