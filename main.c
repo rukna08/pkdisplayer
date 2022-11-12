@@ -74,7 +74,7 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
                 
                 case VK_LEFT: {
                     
-                    g_Text = "<-";
+                    g_Text = "LEFT";
 
                     break;
 
@@ -82,7 +82,23 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
 
                 case VK_RIGHT: {
                     
-                    g_Text = "->";
+                    g_Text = "RIGHT";
+
+                    break;
+
+                }
+
+                case VK_UP: {
+                    
+                    g_Text = "UP";
+
+                    break;
+
+                }
+
+                case VK_DOWN: {
+                    
+                    g_Text = "DOWN";
 
                     break;
 
@@ -100,6 +116,8 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
 
             }
 
+            InvalidateRect(WindowHandle, 0, TRUE);
+            
             SendMessageA(WindowHandle, WM_PAINT, WParam, LParam);
 
             Result = 0;
@@ -124,12 +142,14 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
 
 void DisplayText(HWND WindowHandle, char* Text) {
 
+    UpdateWindow(WindowHandle);
+
     HDC DC = GetDC(WindowHandle);
     
     RECT TextRect;
     
     GetClientRect(WindowHandle, &TextRect);
-    
+
     DrawTextA(DC, Text, -1, &TextRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
     
     ReleaseDC(WindowHandle, DC);
