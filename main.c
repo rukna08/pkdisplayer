@@ -504,6 +504,126 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
 
                 }
 
+                case VK_NUMLOCK: {
+                    
+                    g_Text = "NUMLOCK";
+
+                    break;
+
+                }
+
+                case VK_NUMPAD0: {
+                    
+                    g_Text = "NUM 0";
+
+                    break;
+
+                }
+
+                case VK_NUMPAD1: {
+                    
+                    g_Text = "NUM 1";
+
+                    break;
+
+                }
+
+                case VK_NUMPAD2: {
+                    
+                    g_Text = "NUM 2";
+
+                    break;
+
+                }
+
+                case VK_NUMPAD3: {
+                    
+                    g_Text = "NUM 3";
+
+                    break;
+
+                }
+
+                case VK_NUMPAD4: {
+                    
+                    g_Text = "NUM 4";
+
+                    break;
+
+                }
+
+                case VK_NUMPAD5: {
+                    
+                    g_Text = "NUM 5";
+
+                    break;
+
+                }
+
+                case VK_NUMPAD6: {
+                    
+                    g_Text = "NUM 6";
+
+                    break;
+
+                }
+
+                case VK_NUMPAD7: {
+                    
+                    g_Text = "NUM 7";
+
+                    break;
+
+                }
+
+                case VK_NUMPAD8: {
+                    
+                    g_Text = "NUM 8";
+
+                    break;
+
+                }
+
+                case VK_NUMPAD9: {
+                    
+                    g_Text = "NUM 9";
+
+                    break;
+
+                }
+
+                case VK_ADD: {
+                    
+                    g_Text = "+";
+
+                    break;
+
+                }
+
+                case VK_SUBTRACT: {
+                    
+                    g_Text = "-";
+
+                    break;
+
+                }
+
+                case VK_MULTIPLY: {
+                    
+                    g_Text = "*";
+
+                    break;
+
+                }
+
+                case VK_DIVIDE: {
+                    
+                    g_Text = "/";
+
+                    break;
+
+                }
+
                 // Escape is set to quit the application temporarily.
 
                 case VK_ESCAPE: {
