@@ -719,6 +719,14 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
                     break;
 
                 }
+                
+                case VK_SCROLL: {
+                    
+                    g_Text = "SCROLL";
+
+                    break;
+
+                }
 
                 // Escape is set to quit the application temporarily.
 
