@@ -624,6 +624,102 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
 
                 }
 
+                case VK_F1: {
+                    
+                    g_Text = "F1";
+
+                    break;
+
+                }
+
+                case VK_F2: {
+                    
+                    g_Text = "F2";
+
+                    break;
+
+                }
+
+                case VK_F3: {
+                    
+                    g_Text = "F3";
+
+                    break;
+
+                }
+
+                case VK_F4: {
+                    
+                    g_Text = "F4";
+
+                    break;
+
+                }
+
+                case VK_F5: {
+                    
+                    g_Text = "F5";
+
+                    break;
+
+                }
+
+                case VK_F6: {
+                    
+                    g_Text = "F6";
+
+                    break;
+
+                }
+
+                case VK_F7: {
+                    
+                    g_Text = "F7";
+
+                    break;
+
+                }
+
+                case VK_F8: {
+                    
+                    g_Text = "F8";
+
+                    break;
+
+                }
+
+                case VK_F9: {
+                    
+                    g_Text = "F9";
+
+                    break;
+
+                }
+
+                case VK_F10: {
+                    
+                    g_Text = "F10";
+
+                    break;
+
+                }
+
+                case VK_F11: {
+                    
+                    g_Text = "F11";
+
+                    break;
+
+                }
+
+                case VK_F12: {
+                    
+                    g_Text = "F12";
+
+                    break;
+
+                }
+
                 // Escape is set to quit the application temporarily.
 
                 case VK_ESCAPE: {
