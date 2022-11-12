@@ -74,15 +74,33 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
                 
                 case VK_LEFT: {
                     
-                    g_Text = "Left";
+                    g_Text = "<-";
 
-                    SendMessageA(WindowHandle, WM_PAINT, WParam, LParam);
+                    break;
+
+                }
+
+                case VK_RIGHT: {
+                    
+                    g_Text = "->";
+
+                    break;
+
+                }
+
+                // Escape is set to quit the application temporarily.
+
+                case VK_ESCAPE: {
+                    
+                    SendMessageA(WindowHandle, WM_CLOSE, WParam, LParam);
 
                     break;
 
                 }
 
             }
+
+            SendMessageA(WindowHandle, WM_PAINT, WParam, LParam);
 
             Result = 0;
 
