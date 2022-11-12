@@ -1,26 +1,14 @@
 #include <windows.h>
  
-LRESULT CALLBACK WindowProc(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPARAM LParam);
+
+void DisplayText(HWND WindowHandle, char* Text);
 
 int g_WindowWidth = 150;
 
 int g_WindowHeight = 150;
 
 HWND g_WindowHandle;
-
-void DisplayText(HWND WindowHandle, char* Text) {
-
-    HDC DC = GetDC(WindowHandle);
-    
-    RECT RC;
-    
-    GetClientRect(WindowHandle, &RC);
-    
-    DrawTextA(DC, Text, -1, &RC, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
-    
-    ReleaseDC(WindowHandle, DC);
-
-}
  
 int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, int CommandShow) {
     
@@ -107,5 +95,19 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
         }
 
     }
+
+}
+
+void DisplayText(HWND WindowHandle, char* Text) {
+
+    HDC DC = GetDC(WindowHandle);
+    
+    RECT TextRect;
+    
+    GetClientRect(WindowHandle, &TextRect);
+    
+    DrawTextA(DC, Text, -1, &TextRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+    
+    ReleaseDC(WindowHandle, DC);
 
 }
