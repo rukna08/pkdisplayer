@@ -58,7 +58,7 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
 
             BeginPaint(g_WindowHandle, &PS);
 
-            DisplayText(g_WindowHandle, "K");
+            DisplayText(g_WindowHandle, g_Text);
 
             EndPaint(g_WindowHandle, &PS);
 
@@ -66,6 +66,28 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
 
             break;
         
+        }
+
+        case WM_KEYDOWN: {
+
+            switch (WParam) {
+                
+                case VK_LEFT: {
+                    
+                    g_Text = "Left";
+
+                    SendMessageA(WindowHandle, WM_PAINT, WParam, LParam);
+
+                    break;
+
+                }
+
+            }
+
+            Result = 0;
+
+            break;
+
         }
 
         default: {

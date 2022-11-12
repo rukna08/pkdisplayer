@@ -13,3 +13,5 @@ int g_WindowHeight = 150;
 HWND g_WindowHandle;
 
 WNDCLASSA g_WindowClass = {0};
+
+char* g_Text = "K";
