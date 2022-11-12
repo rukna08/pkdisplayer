@@ -1,15 +1,7 @@
 #include <windows.h>
- 
-LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPARAM LParam);
 
-void DisplayText(HWND WindowHandle, char* Text);
+#include "main.h"
 
-int g_WindowWidth = 150;
-
-int g_WindowHeight = 150;
-
-HWND g_WindowHandle;
- 
 int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, int CommandShow) {
     
     WNDCLASSEXA WindowClass = {0};
