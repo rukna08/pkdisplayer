@@ -728,8 +728,6 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
 
                 }
 
-                // Escape is set to quit the application temporarily.
-
                 case VK_ESCAPE: {
                     
                     SendMessageA(WindowHandle, WM_CLOSE, WParam, LParam);
