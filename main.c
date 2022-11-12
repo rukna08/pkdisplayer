@@ -3,28 +3,10 @@
 #include "main.h"
 
 int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, int CommandShow) {
-    
-    WNDCLASSEXA WindowClass = {0};
- 
-    WindowClass.cbSize = sizeof(WNDCLASSEXA);
 
-    WindowClass.lpfnWndProc = WindowProc;
+    SetWindowClass(g_WindowClass, Instance);
     
-    WindowClass.hInstance = Instance;
-    
-    WindowClass.hIcon = LoadIconA(0, IDI_APPLICATION);
-    
-    WindowClass.hCursor = LoadCursorA(0, IDC_ARROW);
-    
-    WindowClass.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);
-    
-    WindowClass.lpszClassName = "MainWindowClass";
-    
-    WindowClass.hIconSm = LoadIconA(0, IDI_APPLICATION);
-    
-    RegisterClassExA(&WindowClass);
-    
-    g_WindowHandle = CreateWindowA(WindowClass.lpszClassName, 0, WS_VISIBLE | WS_POPUP, CW_USEDEFAULT, CW_USEDEFAULT, g_WindowWidth, g_WindowHeight, 0, 0, Instance, 0);
+    g_WindowHandle = CreateWindowA(g_WindowClass.lpszClassName, 0, WS_VISIBLE | WS_POPUP, CW_USEDEFAULT, CW_USEDEFAULT, g_WindowWidth, g_WindowHeight, 0, 0, Instance, 0);
 
     UpdateWindow(g_WindowHandle);
  
@@ -105,5 +87,21 @@ void DisplayText(HWND WindowHandle, char* Text) {
     DrawTextA(DC, Text, -1, &TextRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
     
     ReleaseDC(WindowHandle, DC);
+
+}
+
+void SetWindowClass(WNDCLASSA WindowClass, HINSTANCE Instance) {
+ 
+    g_WindowClass.lpfnWndProc = WindowProc;
+    
+    g_WindowClass.hInstance = Instance;
+        
+    g_WindowClass.hCursor = LoadCursorA(0, IDC_ARROW);
+    
+    g_WindowClass.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);
+    
+    g_WindowClass.lpszClassName = "MainWindowClass";
+        
+    RegisterClassA(&g_WindowClass);
 
 }
