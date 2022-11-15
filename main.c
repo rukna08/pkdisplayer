@@ -12,23 +12,7 @@ int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, i
 
     UpdateWindow(g_WindowHandle);
 
-    MSG Message = {0};
-
-    while(GetMessage(&Message, 0, 0, 0) > 0) {
-    
-        TranslateMessage(&Message);
-    
-        DispatchMessage(&Message);
-
-        if(Message.message == WM_KEYDOWN) {
-
-            ShowWindow(g_WindowHandle, SW_SHOW);
-
-            SetTimer(g_WindowHandle, IDT_TIMER, 2000, (TIMERPROC)0);
-
-        }
-
-    }
+    ProcessMessage();
  
     return 0;
 
@@ -815,5 +799,27 @@ void SetWindowClass(WNDCLASSA WindowClass, HINSTANCE Instance) {
     g_WindowClass.lpszClassName = "MainWindowClass";
         
     RegisterClassA(&g_WindowClass);
+
+}
+
+void ProcessMessage() {
+
+    MSG Message = {0};
+
+    while(GetMessage(&Message, 0, 0, 0) > 0) {
+    
+        TranslateMessage(&Message);
+    
+        DispatchMessage(&Message);
+
+        if(Message.message == WM_KEYDOWN) {
+
+            ShowWindow(g_WindowHandle, SW_SHOW);
+
+            SetTimer(g_WindowHandle, IDT_TIMER, g_WindowWaitTime * 1000, (TIMERPROC)0);
+
+        }
+
+    }
 
 }
