@@ -6,8 +6,6 @@ void DisplayText(HWND WindowHandle, char* Text);
 
 void SetWindowClass(WNDCLASSA WindowClass, HINSTANCE Instance);
 
-BOOL HasFiveSecondsElapsed();
-
 int g_WindowWidth = 150;
 
 int g_WindowHeight = 150;
@@ -18,4 +16,4 @@ WNDCLASSA g_WindowClass = {0};
 
 char* g_Text = "NULL";
 
-long g_StartTime;
+UINT_PTR IDT_TIMER;

@@ -1,7 +1,5 @@
 #include <windows.h>
 
-#include <time.h>
-
 #include "main.h"
 
 int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, int CommandShow) {
@@ -13,8 +11,6 @@ int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, i
     MoveWindow(g_WindowHandle, (GetSystemMetrics(SM_CXSCREEN) / 2) - (g_WindowWidth / 2), (GetSystemMetrics(SM_CYSCREEN) / 2) - (g_WindowHeight / 2), g_WindowWidth, g_WindowHeight, FALSE);
 
     UpdateWindow(g_WindowHandle);
-    
-    g_StartTime = clock();
 
     MSG Message = {0};
 
@@ -24,11 +20,11 @@ int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, i
     
         DispatchMessage(&Message);
 
-        if(HasFiveSecondsElapsed()) {
+        if(Message.message == WM_KEYDOWN) {
 
-            AnimateWindow(g_WindowHandle, 0, AW_BLEND | AW_HIDE);
+            ShowWindow(g_WindowHandle, SW_SHOW);
 
-            //SendMessageA(g_WindowHandle, WM_CLOSE, 0, 0);
+            SetTimer(g_WindowHandle, IDT_TIMER, 2000, (TIMERPROC)0);
 
         }
 
@@ -39,10 +35,26 @@ int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, i
 }
  
 LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPARAM LParam) {
-    
+
     switch(Message) {
 
         LRESULT Result;
+
+        case WM_TIMER: {
+
+            if(WParam == IDT_TIMER) {
+
+                AnimateWindow(g_WindowHandle, 0, AW_BLEND | AW_HIDE);
+
+                Result = 0;
+
+                break;
+
+            }
+
+            break;
+
+        }
 
         case WM_CLOSE: {
             
@@ -803,23 +815,5 @@ void SetWindowClass(WNDCLASSA WindowClass, HINSTANCE Instance) {
     g_WindowClass.lpszClassName = "MainWindowClass";
         
     RegisterClassA(&g_WindowClass);
-
-}
-
-BOOL HasFiveSecondsElapsed() {
-
-    long CurrentTime = clock();
-
-    long ElapsedTime = (CurrentTime - g_StartTime) / CLOCKS_PER_SEC;
-
-    if(ElapsedTime >= 5) {
-
-        g_StartTime = CurrentTime;
-
-        return TRUE;
-
-    }
-    
-    return FALSE;
 
 }
