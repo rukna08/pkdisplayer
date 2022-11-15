@@ -1,5 +1,7 @@
 #include <windows.h>
 
+#include <time.h>
+
 #include "main.h"
 
 int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, int CommandShow) {
@@ -11,15 +13,25 @@ int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, i
     MoveWindow(g_WindowHandle, (GetSystemMetrics(SM_CXSCREEN) / 2) - (g_WindowWidth / 2), (GetSystemMetrics(SM_CYSCREEN) / 2) - (g_WindowHeight / 2), g_WindowWidth, g_WindowHeight, FALSE);
 
     UpdateWindow(g_WindowHandle);
- 
-    MSG Message = {0};
- 
-    while(GetMessage(&Message, 0, 0, 0) > 0) {
-        
-        TranslateMessage(&Message);
-        
-        DispatchMessage(&Message);
     
+    g_StartTime = clock();
+
+    MSG Message = {0};
+
+    while(GetMessage(&Message, 0, 0, 0) > 0) {
+    
+        TranslateMessage(&Message);
+    
+        DispatchMessage(&Message);
+
+        if(HasFiveSecondsElapsed()) {
+
+            AnimateWindow(g_WindowHandle, 0, AW_BLEND | AW_HIDE);
+
+            //SendMessageA(g_WindowHandle, WM_CLOSE, 0, 0);
+
+        }
+
     }
  
     return 0;
@@ -729,7 +741,7 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
                 }
 
                 case VK_ESCAPE: {
-                    
+
                     SendMessageA(WindowHandle, WM_CLOSE, WParam, LParam);
 
                     break;
@@ -791,5 +803,23 @@ void SetWindowClass(WNDCLASSA WindowClass, HINSTANCE Instance) {
     g_WindowClass.lpszClassName = "MainWindowClass";
         
     RegisterClassA(&g_WindowClass);
+
+}
+
+BOOL HasFiveSecondsElapsed() {
+
+    long CurrentTime = clock();
+
+    long ElapsedTime = (CurrentTime - g_StartTime) / CLOCKS_PER_SEC;
+
+    if(ElapsedTime >= 5) {
+
+        g_StartTime = CurrentTime;
+
+        return TRUE;
+
+    }
+    
+    return FALSE;
 
 }
