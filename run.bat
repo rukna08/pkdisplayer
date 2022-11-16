@@ -1,3 +1,5 @@
 pushd build
-main.exe
+
+pkdisplayer
+
 popd
