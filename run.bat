@@ -1,4 +1,4 @@
-pushd build
+pushd Debug
 
 pkdisplayer
 

@@ -1,8 +1,8 @@
 @echo off
 
-mkdir build
+mkdir Debug
 
-pushd build
+pushd Debug
 
 cl -Zi ../pkdisplayer.c User32.lib Gdi32.lib Kernel32.lib
 
