@@ -1,7 +1,5 @@
 #include <windows.h>
 
-#include <shellapi.h>
-
 #include "pkdisplayer.h"
 
 int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, int CommandShow) {
@@ -12,7 +10,25 @@ int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, i
     
     g_WindowHandle = CreateWindowA(g_WindowClass.lpszClassName, 0, WS_VISIBLE | WS_POPUP, CW_USEDEFAULT, CW_USEDEFAULT, g_WindowWidth, g_WindowHeight, 0, 0, Instance, 0);
     
-    MoveWindow(g_WindowHandle, (GetSystemMetrics(SM_CXSCREEN) / 2) - (g_WindowWidth / 2), (GetSystemMetrics(SM_CYSCREEN) / 2) - (g_WindowHeight / 2), g_WindowWidth, g_WindowHeight, FALSE);
+    g_BlackBrush = CreateSolidBrush(RGB(0, 0, 0));
+
+    SetClassLongPtr(g_WindowHandle, GCLP_HBRBACKGROUND, (LONG_PTR)g_BlackBrush);
+
+    MoveWindow(
+    
+        g_WindowHandle, 
+    
+        GetSystemMetrics(SM_CXSCREEN) - g_WindowWidth * 2,
+    
+        GetSystemMetrics(SM_CYSCREEN) - g_WindowHeight * 2,
+    
+        g_WindowWidth,
+    
+        g_WindowHeight,
+    
+        FALSE
+    
+    );
 
     UpdateWindow(g_WindowHandle);
 

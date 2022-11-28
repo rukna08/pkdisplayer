@@ -27,3 +27,5 @@ int g_WindowWaitTime = 1;
 HHOOK g_KeyboardHookHandle;
 
 LPARAM g_LParam;
+
+HBRUSH g_BlackBrush;
