@@ -10,9 +10,9 @@ int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, i
     
     g_WindowHandle = CreateWindowA(g_WindowClass.lpszClassName, 0, WS_VISIBLE | WS_POPUP, CW_USEDEFAULT, CW_USEDEFAULT, g_WindowWidth, g_WindowHeight, 0, 0, Instance, 0);
     
-    g_BlackBrush = CreateSolidBrush(RGB(0, 0, 0));
+    //g_BlackBrush = CreateSolidBrush(RGB(0, 0, 0));
 
-    SetClassLongPtr(g_WindowHandle, GCLP_HBRBACKGROUND, (LONG_PTR)g_BlackBrush);
+    //SetClassLongPtr(g_WindowHandle, GCLP_HBRBACKGROUND, (LONG_PTR)g_BlackBrush);
 
     MoveWindow(
     
@@ -136,7 +136,7 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
 
                 case VK_BACK: {
                     
-                    g_Text = "BACKSPACE";
+                    g_Text = "BKSPC";
 
                     break;
 
@@ -184,7 +184,7 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
 
                 case VK_CAPITAL: {
                     
-                    g_Text = "CAPSLOCK";
+                    g_Text = "CAPS";
 
                     break;
 
@@ -192,7 +192,7 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
 
                 case VK_SPACE: {
                     
-                    g_Text = "SPACEBAR";
+                    g_Text = "SPACE";
 
                     break;
 
@@ -200,7 +200,7 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
 
                 case VK_PRIOR: {
                     
-                    g_Text = "PAGE UP";
+                    g_Text = "PGUP";
 
                     break;
 
@@ -208,7 +208,7 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
 
                 case VK_NEXT: {
                     
-                    g_Text = "PAGE DOWN";
+                    g_Text = "PGDWN";
 
                     break;
 
@@ -232,7 +232,7 @@ LRESULT CALLBACK WindowProc(HWND WindowHandle, UINT Message, WPARAM WParam, LPAR
 
                 case VK_SNAPSHOT: {
                     
-                    g_Text = "PRINT SCREEN";
+                    g_Text = "PRTSC";
 
                     break;
 
@@ -797,10 +797,16 @@ void DisplayText(HWND WindowHandle, char* Text) {
     UpdateWindow(WindowHandle);
 
     HDC DC = GetDC(WindowHandle);
+
+    HFONT Font = CreateFont(48, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS, CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, VARIABLE_PITCH, TEXT("Roboto"));
     
+    SelectObject(DC, Font);
+
     RECT TextRect;
     
     GetClientRect(WindowHandle, &TextRect);
+
+    SetTextColor(DC, RGB(255, 0, 0));
 
     DrawTextA(DC, Text, -1, &TextRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
     
@@ -892,7 +898,7 @@ LRESULT CALLBACK KBDHook(int NCode, WPARAM WParam, LPARAM LParam) {
 
                 case VK_BACK: {
                     
-                    g_Text = "BACKSPACE";
+                    g_Text = "BKSPC";
 
                     break;
 
@@ -940,7 +946,7 @@ LRESULT CALLBACK KBDHook(int NCode, WPARAM WParam, LPARAM LParam) {
 
                 case VK_CAPITAL: {
                     
-                    g_Text = "CAPSLOCK";
+                    g_Text = "CAPS";
 
                     break;
 
@@ -948,7 +954,7 @@ LRESULT CALLBACK KBDHook(int NCode, WPARAM WParam, LPARAM LParam) {
 
                 case VK_SPACE: {
                     
-                    g_Text = "SPACEBAR";
+                    g_Text = "SPACE";
 
                     break;
 
@@ -956,7 +962,7 @@ LRESULT CALLBACK KBDHook(int NCode, WPARAM WParam, LPARAM LParam) {
 
                 case VK_PRIOR: {
                     
-                    g_Text = "PAGE UP";
+                    g_Text = "PGUP";
 
                     break;
 
@@ -964,7 +970,7 @@ LRESULT CALLBACK KBDHook(int NCode, WPARAM WParam, LPARAM LParam) {
 
                 case VK_NEXT: {
                     
-                    g_Text = "PAGE DOWN";
+                    g_Text = "PGDN";
 
                     break;
 
@@ -988,7 +994,7 @@ LRESULT CALLBACK KBDHook(int NCode, WPARAM WParam, LPARAM LParam) {
 
                 case VK_SNAPSHOT: {
                     
-                    g_Text = "PRINT SCREEN";
+                    g_Text = "PRTSC";
 
                     break;
 
