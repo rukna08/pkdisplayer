@@ -8,11 +8,31 @@ int WinMain(HINSTANCE Instance, HINSTANCE PreviousInstance, LPSTR CommandLine, i
 
     SetWindowClass(g_WindowClass, Instance);
     
-    g_WindowHandle = CreateWindowA(g_WindowClass.lpszClassName, 0, WS_VISIBLE | WS_POPUP, CW_USEDEFAULT, CW_USEDEFAULT, g_WindowWidth, g_WindowHeight, 0, 0, Instance, 0);
-    
-    //g_BlackBrush = CreateSolidBrush(RGB(0, 0, 0));
+    g_WindowHandle = CreateWindowA(
+        
+        g_WindowClass.lpszClassName,
+        
+        0,
+        
+        WS_VISIBLE | WS_POPUP,
+        
+        CW_USEDEFAULT,
+        
+        CW_USEDEFAULT,
+        
+        g_WindowWidth,
+        
+        g_WindowHeight,
+        
+        0,
+        
+        0,
+        
+        Instance,
+        
+        0
 
-    //SetClassLongPtr(g_WindowHandle, GCLP_HBRBACKGROUND, (LONG_PTR)g_BlackBrush);
+    );
 
     MoveWindow(
     
